@@ -12,14 +12,16 @@ app.listen(PORT, () => {
     console.log('Server started on port:', PORT);
 });
 
-numbers = [];
+operations = [];
 
 app.post('/calc', (req, res) => {
     console.log('In calculate POST');
-    let number = Number(req.body.firstNumber) + Number(req.body.secondNumber)
-    numbers.push(number);
-    res.send(req.body);
-    console.log(numbers);
+    let answer = Number(req.body.firstNumber) + Number(req.body.secondNumber);
+    let operation = `${req.body.firstNumber} + ${req.body.secondNumber} = ${answer}`;
+    // let operation = req.body.firstNumber + '+' + req.body.secondNumber + '=' + answer;
+    operations.push(operation);
+    res.sendStatus(200);
+    console.log(operations);
 });
 
 app.get('/calc', (req, res) => {
