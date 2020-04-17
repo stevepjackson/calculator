@@ -1,3 +1,6 @@
+[x] - html number inputs
+[x] - html buttons
+[] - 
 # Weekend Challenge: Server Side Calculator
 
 Welcome to the weekend challenge!
