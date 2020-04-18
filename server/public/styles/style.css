@@ -1,3 +1,7 @@
 body {
     background: lightseagreen;
 }
+
+ul {
+    list-style: none;
+}

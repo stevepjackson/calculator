@@ -4,6 +4,7 @@ $(document).ready(readyNow);
 
 function readyNow() {
     console.log('jquery ready');
+    getCalculations();
     $('#equals').on('click', calculate);
     $('#clear').on('click', clear);
     $('#add').on('click', add);
@@ -57,7 +58,7 @@ function calculate() {
     } else {
         $.ajax({
             type: 'POST',
-            url: '/add',
+            url: '/calculations',
             data: objectToSend
         }).then (function(response) {
             console.log('Back from POST:', response);
@@ -65,39 +66,27 @@ function calculate() {
             alert('Error! Check console.', error);
         });
     }
-    //  else if (operator === '-') {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '/subtract',
-    //         data: objectToSend
-    //     }).then (function(response) {
-    //         console.log('Back from POST:', response);
-    //     }).catch (function(error) {
-    //         alert('Error! Check console.', error);
-    //     });
-    // } else if (operator === '*') {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '/multiply',
-    //         data: objectToSend
-    //     }).then (function(response) {
-    //         console.log('Back from POST:', response);
-    //     }).catch (function(error) {
-    //         alert('Error! Check console.', error);
-    //     });
-    // } else if (operator === '/') {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '/divide',
-    //         data: objectToSend
-    //     }).then (function(response) {
-    //         console.log('Back from POST:', response);
-    //     }).catch (function(error) {
-    //         alert('Error! Check console.', error);
-    //     });
-    // }
-
+    getCalculations();
     clear();
-    
-  
+}
+
+function getCalculations() {
+    $.ajax({
+        type: 'GET',
+        url: '/calculations'
+    }).then (function(response) {
+        console.log('Back from GET:', response);
+        append(response);
+    }).catch (function(error) {
+        console.log('Error! Check console.', error);
+    });
+}
+
+function append(response) {
+    $('#display').empty();
+    for (let i = 0; i < response.length; i++) {
+        $('#display').append(`
+        <li>${response[i]}</li>
+        `);
+    }
 }

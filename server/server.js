@@ -14,7 +14,7 @@ app.listen(PORT, () => {
 
 operations = [];
 
-app.post('/add', (req, res) => {
+app.post('/calculations', (req, res) => {
     console.log('In calculate POST');
     if (req.body.operator === '+') {
         let answer = Number(req.body.firstNumber) + Number(req.body.secondNumber);
@@ -38,7 +38,7 @@ app.post('/add', (req, res) => {
     console.log(operations);
 });
 
-app.get('/calc', (req, res) => {
+app.get('/calculations', (req, res) => {
     console.log('In calculate GET');
     res.send(operations);
 })
