@@ -10,6 +10,7 @@ function readyNow() {
     $('#add').on('click', add);
     $('#subtract').on('click', subtract);
     $('#multiply').on('click', multiply);
+    $('#divide').on('click', divide);
     $('#one').on('click', one);
     $('#two').on('click', two);
     $('#three').on('click', three);
@@ -24,79 +25,89 @@ function readyNow() {
 }
 
 function one() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function two() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function three() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function four() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function five() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function six() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function seven() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function eight() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function nine() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function zero() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val());
+    $('#input').val($('#input').val()+$(this).val());
 }
 function dot() {
-    $('#inputOne').val($('#inputOne').val()+$(this).val('5'));
+    $('#input').val($('#input').val()+$(this).val());
 }
 
 let operator = '';
 
 function add() {
     console.log('add');
+    $('#input').val($('#input').val()+$(this).val());
     operator = '+';
 }
 
 function subtract() {
     console.log('subtract');
+    $('#input').val($('#input').val()+$(this).val());
     operator = '-';
 }
 
 function multiply() {
     console.log('multiply');
+    $('#input').val($('#input').val()+$(this).val());
     operator = '*';
 }
 
 function divide() {
     console.log('divide');
+    $('#input').val($('#input').val()+$(this).val());
     operator = '/';
 }
 
 function clear() {
-    $('#inputOne').val('');
-    $('#inputTwo').val('');
+    $('#input').val('');
 }
 
 function calculate() {
+    let string = $('#input').val();
+    let stringArray = string.split(' ');
+    console.log(stringArray);
     let objectToSend = {
-        firstNumber: $('#inputOne').val(),
-        operator: operator,
-        secondNumber: $('#inputTwo').val()
+        operation: stringArray,
     }
+    // if (newString[1] === '+') {
+    //     let answer = Number(newString[0]) + Number(newString[2]);
+    //     console.log(answer);
+    // }
+    // let objectToSend = {
+    //     firstNumber: $('#input').val(),
+    //     operator: operator,
+    // }
 
-    if ($('#inputOne').val() === '' || $('#inputTwo').val() === '') {
+    if ($('#input').val() === '') {
         alert('Please input two numbers!');
         return;
-    }
-
-    if (operator === '') {
+    } else if (operator === '') {
         alert('Please select an operator!');
         return;
     } else {
@@ -128,6 +139,7 @@ function getCalculations() {
 
 function append(response) {
     $('#display').empty();
+    console.log(response);
     for (let i = 0; i < response.length; i++) {
         $('#display').append(`
         <li>${response[i]}</li>

@@ -16,24 +16,29 @@ operations = [];
 
 app.post('/calculations', (req, res) => {
     console.log('In calculate POST');
-    if (req.body.operator === '+') {
-        let answer = Number(req.body.firstNumber) + Number(req.body.secondNumber);
-        let operation = `${req.body.firstNumber} + ${req.body.secondNumber} = ${answer}`;
-        operations.push(operation);
-    } else if (req.body.operator === '-') {
-        let answer = Number(req.body.firstNumber) - Number(req.body.secondNumber);
-        let operation = `${req.body.firstNumber} - ${req.body.secondNumber} = ${answer}`;
-        operations.push(operation);
-    } else if (req.body.operator === '*') {
-        let answer = Number(req.body.firstNumber) * Number(req.body.secondNumber);
-        let operation = `${req.body.firstNumber} * ${req.body.secondNumber} = ${answer}`;
-        operations.push(operation);
+    let firstNumber = Number(req.body.operation[0]);
+    let secondNumber = Number(req.body.operation[2])
+    if (req.body.operation[1] === '+') {
+        let answer = firstNumber + secondNumber;
+        console.log(answer);
+        operations.push(`${firstNumber} + ${secondNumber} = ${answer}`);
+    } else if (req.body.operation[1] === '-') {
+        let answer = firstNumber - secondNumber;
+        console.log(answer);
+        operations.push(`${firstNumber} - ${secondNumber} = ${answer}`);
+    } else if (req.body.operation[1] === '*') {
+        let answer = firstNumber * secondNumber;
+        console.log(answer);
+        operations.push(`${firstNumber} * ${secondNumber} = ${answer}`);
     } else {
-        let answer = Number(req.body.firstNumber) / Number(req.body.secondNumber);
-        let operation = `${req.body.firstNumber} / ${req.body.secondNumber} = ${answer}`;
-        operations.push(operation);
+        let answer = firstNumber / secondNumber;
+        console.log(answer);
+        operations.push(`${firstNumber} / ${secondNumber} = ${answer}`);
     }
-    
+    // let object = {
+    //     answer: answer,
+    //     operations: operations
+    // }
     res.sendStatus(200);
     console.log(operations);
 });
