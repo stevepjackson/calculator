@@ -10,7 +10,51 @@ function readyNow() {
     $('#add').on('click', add);
     $('#subtract').on('click', subtract);
     $('#multiply').on('click', multiply);
-    $('#divide').on('click', divide);
+    $('#one').on('click', one);
+    $('#two').on('click', two);
+    $('#three').on('click', three);
+    $('#four').on('click', four);
+    $('#five').on('click', five);
+    $('#six').on('click', six);
+    $('#seven').on('click', seven);
+    $('#eight').on('click', eight);
+    $('#nine').on('click', nine);
+    $('#zero').on('click', zero);
+    $('#dot').on('click', dot);
+}
+
+function one() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function two() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function three() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function four() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function five() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function six() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function seven() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function eight() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function nine() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function zero() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val());
+}
+function dot() {
+    $('#inputOne').val($('#inputOne').val()+$(this).val('5'));
 }
 
 let operator = '';
