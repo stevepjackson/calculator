@@ -1,7 +1,18 @@
 body {
-    background: lightseagreen;
+    background: lightslategray;
+    display: block;
 }
 
 ul {
     list-style: none;
 }
+
+.btn {
+    height: 50px;
+    width: 50px;
+}
+
+input {
+    height: 45px;
+}
+
