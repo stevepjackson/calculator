@@ -40,27 +40,64 @@ function clear() {
 }
 
 function calculate() {
-    if (operator === '') {
-        alert('Please select an operator!');
-        return;
-    }
-    if ($('#inputOne').val() === '' || $('#inputTwo').val() === '') {
-        alert('Please input two numbers!');
-    }
-
     let objectToSend = {
         firstNumber: $('#inputOne').val(),
         operator: operator,
         secondNumber: $('#inputTwo').val()
     }
+
+    if ($('#inputOne').val() === '' || $('#inputTwo').val() === '') {
+        alert('Please input two numbers!');
+        return;
+    }
+
+    if (operator === '') {
+        alert('Please select an operator!');
+        return;
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: '/add',
+            data: objectToSend
+        }).then (function(response) {
+            console.log('Back from POST:', response);
+        }).catch (function(error) {
+            alert('Error! Check console.', error);
+        });
+    }
+    //  else if (operator === '-') {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/subtract',
+    //         data: objectToSend
+    //     }).then (function(response) {
+    //         console.log('Back from POST:', response);
+    //     }).catch (function(error) {
+    //         alert('Error! Check console.', error);
+    //     });
+    // } else if (operator === '*') {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/multiply',
+    //         data: objectToSend
+    //     }).then (function(response) {
+    //         console.log('Back from POST:', response);
+    //     }).catch (function(error) {
+    //         alert('Error! Check console.', error);
+    //     });
+    // } else if (operator === '/') {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/divide',
+    //         data: objectToSend
+    //     }).then (function(response) {
+    //         console.log('Back from POST:', response);
+    //     }).catch (function(error) {
+    //         alert('Error! Check console.', error);
+    //     });
+    // }
+
     clear();
-    $.ajax({
-        type: 'POST',
-        url: '/calc',
-        data: objectToSend
-    }).then (function(response) {
-        console.log('Back from POST:', response);
-    }).catch (function(error) {
-        alert('Error! Check console.', error);
-    });
+    
+  
 }
