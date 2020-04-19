@@ -11,10 +11,13 @@ app.use(express.static('server/public'));
 app.listen(PORT, () => {
     console.log('Server started on port:', PORT);
 });
-
+// Array for complete operations.
 operations = [];
+
+// Array for answers.
 answers = [];
 
+// Handles math operations and adds to array.
 app.post('/calculations', (req, res) => {
     console.log('In calculate POST');
     let firstNumber = Number(req.body.operation[0]);
@@ -45,11 +48,20 @@ app.post('/calculations', (req, res) => {
     console.log(answers);
 });
 
+// Sends calculations array to client.
 app.get('/calculations', (req, res) => {
     console.log('In calculate GET');
     res.send(operations);
 })
 
+// Sends answers array to client.
 app.get('/answers', (req, res) => {
     res.send(answers);
+})
+
+// Empties operations array.
+app.delete('/calculations', (req, res) => {
+    console.log('In calculate delete');
+    operations = [];
+    res.send(operations);
 })
