@@ -62,24 +62,68 @@ let operator = '';
 
 function add() {
     console.log('add');
+    if ($('#input').val() === '') {
+        alert ('Please enter a number first!');
+        return;        
+    }
+    if ($('#input').val().includes('+') ||
+        $('#input').val().includes('-') ||
+        $('#input').val().includes('*') ||
+        $('#input').val().includes('/')) {
+        alert('You have already entered an operator!');
+        return;
+    }
     $('#input').val($('#input').val()+$(this).val());
     operator = '+';
 }
 
 function subtract() {
     console.log('subtract');
+    if ($('#input').val() === '') {
+        alert ('Please enter a number first!');
+        return;        
+    }
+    if ($('#input').val().includes('+') ||
+        $('#input').val().includes('-') ||
+        $('#input').val().includes('*') ||
+        $('#input').val().includes('/')) {
+        alert('You have already entered an operator!');
+        return;
+    }
     $('#input').val($('#input').val()+$(this).val());
     operator = '-';
 }
 
 function multiply() {
     console.log('multiply');
+    if ($('#input').val() === '') {
+        alert ('Please enter a number first!');
+        return;        
+    }
+    if ($('#input').val().includes('+') ||
+        $('#input').val().includes('-') ||
+        $('#input').val().includes('*') ||
+        $('#input').val().includes('/')) {
+        alert('You have already entered an operator!');
+        return;
+    }
     $('#input').val($('#input').val()+$(this).val());
     operator = '*';
 }
 
 function divide() {
     console.log('divide');
+    if ($('#input').val() === '') {
+        alert ('Please enter a number first!');
+        return;        
+    }
+    if ($('#input').val().includes('+') ||
+        $('#input').val().includes('-') ||
+        $('#input').val().includes('*') ||
+        $('#input').val().includes('/')) {
+        alert('You have already entered an operator!');
+        return;
+    }
     $('#input').val($('#input').val()+$(this).val());
     operator = '/';
 }

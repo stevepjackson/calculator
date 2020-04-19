@@ -38,3 +38,9 @@ input {
     background: white;
 }
 
+.btn:hover {
+    background: rgb(91, 91, 91);
+    border-color: black;
+    color: white;
+}
+
