@@ -13,6 +13,7 @@ app.listen(PORT, () => {
 });
 
 operations = [];
+answers = [];
 
 app.post('/calculations', (req, res) => {
     console.log('In calculate POST');
@@ -21,29 +22,34 @@ app.post('/calculations', (req, res) => {
     if (req.body.operation[1] === '+') {
         let answer = firstNumber + secondNumber;
         console.log(answer);
+        answers.push(answer);
         operations.push(`${firstNumber} + ${secondNumber} = ${answer}`);
     } else if (req.body.operation[1] === '-') {
         let answer = firstNumber - secondNumber;
         console.log(answer);
+        answers.push(answer);
         operations.push(`${firstNumber} - ${secondNumber} = ${answer}`);
     } else if (req.body.operation[1] === '*') {
         let answer = firstNumber * secondNumber;
         console.log(answer);
+        answers.push(answer);
         operations.push(`${firstNumber} * ${secondNumber} = ${answer}`);
     } else {
         let answer = firstNumber / secondNumber;
         console.log(answer);
+        answers.push(answer);
         operations.push(`${firstNumber} / ${secondNumber} = ${answer}`);
     }
-    // let object = {
-    //     answer: answer,
-    //     operations: operations
-    // }
     res.sendStatus(200);
     console.log(operations);
+    console.log(answers);
 });
 
 app.get('/calculations', (req, res) => {
     console.log('In calculate GET');
     res.send(operations);
+})
+
+app.get('/answers', (req, res) => {
+    res.send(answers);
 })

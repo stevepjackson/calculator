@@ -139,14 +139,6 @@ function calculate() {
     let objectToSend = {
         operation: stringArray,
     }
-    // if (newString[1] === '+') {
-    //     let answer = Number(newString[0]) + Number(newString[2]);
-    //     console.log(answer);
-    // }
-    // let objectToSend = {
-    //     firstNumber: $('#input').val(),
-    //     operator: operator,
-    // }
 
     if ($('#input').val() === '') {
         alert('Please input two numbers!');
@@ -166,6 +158,7 @@ function calculate() {
         });
     }
     getCalculations();
+    getAnswers();
     clear();
 }
 
@@ -179,6 +172,23 @@ function getCalculations() {
     }).catch (function(error) {
         console.log('Error! Check console.', error);
     });
+}
+
+function getAnswers() {
+    $.ajax({
+        type: 'GET',
+        url: '/answers'
+    }).then (function(response) {
+        console.log('Back from GET:', response);
+        appendAnswer(response);
+    }).catch (function(error) {
+        console.log('Error! Check console.', error);
+    });
+}
+
+function appendAnswer(response) {
+    let answer = response[response.length - 1];
+    $('#input').val(answer);
 }
 
 function append(response) {
