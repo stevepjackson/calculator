@@ -1,7 +1,3 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
-
 ## Description
 
 This is a simple math calculator designed to compute two numbers and one operator. The input from the DOM is sent to the
